@@ -44,7 +44,6 @@ const UserTokens: React.FC<{ accountAddress: string }> = ({ accountAddress }) =>
 
   return (
     <div>
-      <h1>Users Tokens</h1>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {!loading && !error && (

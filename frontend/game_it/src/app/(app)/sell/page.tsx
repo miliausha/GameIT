@@ -1,13 +1,25 @@
 'use client';
-
-// import Image from "next/image";
-// import GamePad from '@/images/gamepad.svg';
-// import Dollar from '@/images/dollar.svg';
-// import Link from "next/link";
 import UserTokens from '@/components/UserTokens';
+import { usePrivy, useWallets } from '@privy-io/react-auth';
+import { redirect } from 'next/navigation';
 
 export default function MainPage() {
+
+    const { authenticated, ready } = usePrivy();
+    const { wallets } = useWallets();
+
+  if (!ready) {
     return (
-        <UserTokens accountAddress="0x6bC21d4260033D462a0CCdD8bdDB8fE423805a4a" />
+      <div className="flex justify-center items-center h-screen w-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (!authenticated) {
+    redirect('/');
+  }
+    return (
+        authenticated && wallets.length > 0 &&  <UserTokens accountAddress={wallets[0].address} />
     );
 }

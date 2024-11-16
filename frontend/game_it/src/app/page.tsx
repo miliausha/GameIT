@@ -14,7 +14,7 @@ const metadata: Metadata = {
 };
 
 export default function Home() {
-  const { logout, authenticated, ready, user, createWallet } = usePrivy();
+  const { authenticated, ready, createWallet } = usePrivy();
 
   const { login } = useLogin({
     onComplete: async (user) => {
@@ -34,6 +34,10 @@ export default function Home() {
       </div>
     );
   }
+  if (authenticated) {
+    redirect('/users');
+  }
+  
   return (
     <div className='md:flex w-full h-full mx-auto'>
       <div className='flex-1 flex justify-center items-center space-x-4 px-5 rounded-full'>
@@ -54,7 +58,7 @@ export default function Home() {
             GameBIT: Play mini-games. Win & trade NFTs!
           </p>
           <p className="text-gray-200 text-lg leading-relaxed">
-            Battle in games like "Rock-Paper-Scissors" to win digital collectibles.
+            Battle in games like Rock-Paper-Scissors to win digital collectibles.
           </p>
         </div>
         <div className="mb-8">
@@ -99,17 +103,6 @@ export default function Home() {
             </Button>
           )}
         </div>
-
-        {authenticated && user && (
-          <div className="flex justify-end mt-4">
-            <button
-              onClick={() => logout()}
-              className="px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors"
-            >
-              Logout
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -25,10 +25,7 @@ export default function GamePage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-yellow-300 mb-6 flex justify-center items-center">
-        {/* Rock Paper Scissors Game */}
-      </h1>
+    <div className="mx-auto px-4 py-8">
       <div className="w-full h-[768px]">
         <GameComponent />
       </div>

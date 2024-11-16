@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ethers } from "ethers";
+import { ethers, BrowserProvider } from "ethers";
 import Image from "next/image";
 import Cat from "@/images/date-cat.png";
 
@@ -13,7 +13,7 @@ const NFTTokenURI: React.FC<{ contractAddress: string }> = ({ contractAddress })
   useEffect(() => {
     const fetchNFTImage = async () => {
       try {
-        const provider = new ethers.providers.JsonRpcProvider("https://rpc.blockscout.com/");
+        const provider = new BrowserProvider.JsonRpcProvider("https://rpc.blockscout.com/");
         const contract = new ethers.Contract(contractAddress, contractABI, provider);
         const tokenId = 1;
         const tokenURI: string = await contract.tokenURI(tokenId);
