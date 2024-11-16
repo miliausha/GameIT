@@ -5,11 +5,11 @@ import Kaban from '@/images/Kaban.png';
 export default function Home() {
   return (
     <div className='md:flex w-full h-full mx-10'>
-      <div className='w-1/2 flex justify-between items-center'>
-        <div className="rounded-lg shadow-xl p-4 text-center bg-gradient-primary">
+      <div className='w-1/2 flex justify-center items-center space-x-4'>
+        <div className="rounded-lg shadow-xl p-4 text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
           <Image src={Monkey} alt='monkey' />
         </div>
-        <div>
+        <div className="rounded-lg shadow-xl p-4 text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
           <Image src={Kaban} alt='Kaban' />
         </div>
       </div>

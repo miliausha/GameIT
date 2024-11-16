@@ -20,6 +20,9 @@ export default {
         'text-highlighted': 'var(--text-highlighted)',
         'text-accent': 'var(--text-accent)',
       },
+      backgroundImage: {
+        'gradient-primary': 'var(--gradient-primary)',
+      },
       boxShadow: {
         'glow': '0 0 15px rgba(0, 0, 0, 0.3)',
       },
