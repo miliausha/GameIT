@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import NFTTokenURI from "./NFTTokenURI";
 
 interface TokenData {
   balance: string;
-  tokenAddress: string;
-  tokenName: string;
-  tokenSymbol: string;
+  contractAddress: string;
+  name: string;
+  symbol: string;
   decimals: string;
 }
 
@@ -25,11 +26,12 @@ const UserTokens: React.FC<{ accountAddress: string }> = ({ accountAddress }) =>
     setError(null);
 
     try {
-      const apiUrl = `https://blockscout.com/api?module=account&action=tokenlist&address=${address}`;
+      const apiUrl = `https://base-sepolia.blockscout.com/api?module=account&action=tokenlist&address=${address}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status === "1" && response.data.result) {
         setTokens(response.data.result);
+        console.log(response.data.result[0]);
       } else {
         throw new Error("Unable to fetch tokens.");
       }
@@ -46,16 +48,17 @@ const UserTokens: React.FC<{ accountAddress: string }> = ({ accountAddress }) =>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {!loading && !error && (
-        <ul>
-          {tokens.map((token, index) => (
-            <li key={index}>
-              <p><strong>Name:</strong> {token.tokenName}</p>
-              <p><strong>Symbol:</strong> {token.tokenSymbol}</p>
-              <p><strong>Balance:</strong> {parseInt(token.balance) / 10 ** parseInt(token.decimals)}</p>
-              <p><strong>Contract Address:</strong> {token.tokenAddress}</p>
-            </li>
-          ))}
-        </ul>
+          <ul>
+            {tokens.map((token, index) => (
+              <li key={index}>
+                <NFTTokenURI contractAddress={token.contractAddress} />
+                <p><strong>Name:</strong> {token.name}</p>
+                <p><strong>Symbol:</strong> {token.symbol}</p>
+                <p><strong>Balance:</strong> {parseInt(token.balance) / 10 ** parseInt(token.decimals)}</p>
+                <p><strong>Contract Address:</strong> {token.contractAddress}</p>
+              </li>
+            ))}
+          </ul>
       )}
     </div>
   );

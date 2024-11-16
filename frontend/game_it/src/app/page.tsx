@@ -23,7 +23,7 @@ export default function Home() {
         const userWallet = await createWallet();
         console.log("new user wallet", userWallet);
       }
-      // redirect('/users');
+      redirect('/users');
     },
   });
 

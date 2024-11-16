@@ -13,6 +13,7 @@
     "@privy-io/wagmi": "^0.2.12",
     "@tanstack/react-query": "^5.60.5",
     "axios": "^1.7.7",
+    "ethers": "^6.13.4",
     "moralis": "^2.27.2",
     "next": "15.0.3",
     "privy": "^0.4.1",
