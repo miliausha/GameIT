@@ -1,7 +1,6 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { GameObjects } from 'phaser';
-// import { TimerEvent } from 'phaser';
 
 export class Game extends Scene
 {

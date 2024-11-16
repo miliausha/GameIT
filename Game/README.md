@@ -1,5 +1,5 @@
 # Phaser Remix Template
-# a lot of staff to do 
+
 This is a Phaser 3 project template that uses the Remix framework. It includes a bridge for React to Phaser game communication, hot-reloading for quick development workflow and scripts to generate production-ready builds.
 
 ### Versions
