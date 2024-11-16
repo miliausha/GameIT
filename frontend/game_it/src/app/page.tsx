@@ -1,32 +1,37 @@
-import NFTCard from '@/components/NFTCard';
-
-// Mock data - replace with your actual NFT data
-const nfts = [
-  { id: 1, imageUrl: '/nft1.svg', name: 'Cool NFT #1', price: 0.1 },
-  { id: 2, imageUrl: '/nft2.svg', name: 'Cool NFT #2', price: 0.2 },
-  { id: 3, imageUrl: '/nft3.svg', name: 'Cool NFT #3', price: 0.15 },
-  { id: 4, imageUrl: '/nft4.svg', name: 'Cool NFT #3', price: 0.33 },
-  // Add more NFTs as needed
-];
+import Monkey from '@/images/monkey.png';
+import Image from 'next/image';
+import Kaban from '@/images/Kaban.png';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-7xl w-full">
-        <h1 className="text-4xl font-bold text-center mb-12">GAMEBIT</h1>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {nfts.map((nft) => (
-            <NFTCard
-              key={nft.id}
-              id={nft.id}
-              imageUrl={nft.imageUrl}
-              name={nft.name}
-              price={nft.price}
-            />
-          ))}
+    <div className='md:flex w-full h-full mx-10'>
+      <div className='w-1/2 flex justify-between items-center'>
+        <div className="rounded-lg shadow-xl p-4 text-center bg-gradient-primary">
+          <Image src={Monkey} alt='monkey' />
+        </div>
+        <div>
+          <Image src={Kaban} alt='Kaban' />
         </div>
       </div>
-    </main>
+      <div className='w-1/2 flex flex-col justify-center'>
+        <p className='text-text-highlighted text-2xl'>
+          Step into a world where fun meets rewards!
+        </p>
+        <p>
+          GameBIT is a Game Arena that lets you play exciting mini-games and win exclusive NFTs. Compete with other players in thrilling games like "Rock-Paper-Scissors," where your skills can earn you valuable digital collectibles.
+        </p>
+        <p className='text-text-highlighted'>
+          Here is how it works:
+        </p>
+        <ul className='text-text-highlighted list-disc list-inside'>
+          <li>Join the Game: Enter a match by staking a small entry fee.</li>
+          <li>Compete and Win: Play against other players for a chance to win NFTs and reclaim your stake.</li>
+          <li>Fair and Transparent: Powered by blockchain, our platform ensures secure transactions and fair gameplay.</li>
+        </ul>
+        <p className='text-text-highlighted'>
+          Ready to play and collect? Dive into the NFT Game Arena and turn your skills into rewards!
+        </p>
+      </div>
+    </div>
   );
 }

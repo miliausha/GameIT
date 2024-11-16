@@ -1,30 +1,39 @@
-'use client';
+"use client";
 
-import {PrivyProvider} from '@privy-io/react-auth';
-import { baseSepolia } from 'viem/chains';
-import { createConfig, whoami } from 'viem/utils';
+import { PrivyProvider } from "@privy-io/react-auth";
+import { createConfig, WagmiProvider } from "@privy-io/wagmi";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { http } from "viem";
+import { baseSepolia } from "viem/chains";
 
+const wagmiConfig = createConfig({
+  chains: [baseSepolia],
+  transports: {
+    [baseSepolia.id]: http(),
+  },
+});
 
-export default function Providers({children}: {children: React.ReactNode}) {
+const queryClient = new QueryClient();
+
+export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <PrivyProvider
       appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
       config={{
-        // Customize Privy's appearance in your app
         appearance: {
-          theme: 'light',
-          accentColor: '#676FFF',
-          logo: 'https://your-logo-url',
+          theme: "light",
+          accentColor: "#676FFF",
         },
-        // Create embedded wallets for users who don't have a wallet
         embeddedWallets: {
-          createOnLogin: 'users-without-wallets',
+          createOnLogin: "users-without-wallets",
         },
         defaultChain: baseSepolia,
-        supportedChains: [baseSepolia]
+        supportedChains: [baseSepolia],
       }}
     >
-      {children}
+      <QueryClientProvider client={queryClient}>
+        <WagmiProvider config={wagmiConfig}>{children}</WagmiProvider>
+      </QueryClientProvider>
     </PrivyProvider>
   );
 }
