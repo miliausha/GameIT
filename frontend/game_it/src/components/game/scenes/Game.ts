@@ -4,17 +4,17 @@ import { GameObjects } from 'phaser';
 
 export class Game extends Scene
 {
-    camera: Phaser.Cameras.Scene2D.Camera;
-    background: Phaser.GameObjects.Image;
-    gameText: Phaser.GameObjects.Text;
-    timerText: Phaser.GameObjects.Text;
-    rockButton: Phaser.GameObjects.Text;
-    paperButton: Phaser.GameObjects.Text;
-    scissorsButton: Phaser.GameObjects.Text;
-    playerChoice: string;
-    timeLeft: number;
-    timerEvent: Phaser.Time.TimerEvent;
-    bothPlayersReady: boolean;
+    camera!: Phaser.Cameras.Scene2D.Camera;
+    background!: Phaser.GameObjects.Image;
+    gameText!: Phaser.GameObjects.Text;
+    timerText!: Phaser.GameObjects.Text;
+    rockButton!: Phaser.GameObjects.Text;
+    paperButton!: Phaser.GameObjects.Text;
+    scissorsButton!: Phaser.GameObjects.Text;
+    playerChoice!: string;
+    timeLeft!: number;
+    timerEvent!: Phaser.Time.TimerEvent;
+    bothPlayersReady!: boolean;
     constructor (){super('Game');}
     create ()
     {
