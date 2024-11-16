@@ -8,8 +8,10 @@
   --nft-card-primary: #26C6DA;
   --nft-card-secondary: #D5E800;
   --nft-card-back: #003AE8;
+  --gradient-primary: linear-gradient(to bottom right, var(--nft-card-primary), var(--nft-card-secondary));
   --text-primary: #ffffff;
   --text-secondary: #171717;
+  --text-highlighted: #D5E800;
   --text-accent: #26C6DA;
 }
 
@@ -25,8 +27,10 @@
 body {
   color: var(--foreground);
   /* background: var(--background); */
-  background-color: hsl(266, 64%, 44%);
+  /* background-color: hsl(266, 64%, 44%); */
+  background-color: #171717;
   font-family: Arial, Helvetica, sans-serif;
+  : #D5E800;
 }
 
 .perspective-1000 {
