@@ -59,6 +59,7 @@ const UserTokens: React.FC<{ accountAddress: string }> = ({ accountAddress }) =>
               </li>
             ))}
           </ul>
+          // <Button onClick={() => fetchTokens(accountAddress)}>Refresh</Button>        
       )}
     </div>
   );
