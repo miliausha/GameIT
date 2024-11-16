@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
   return (
     <button
       className="
-        px-8 py-4 
+        px-6 py-2 
         bg-gradient-to-tr from-[var(--nft-card-primary)] to-[var(--nft-card-secondary)]
         text-[var(--text-secondary)]
         rounded-3xl font-bold text-lg

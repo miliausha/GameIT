@@ -13,7 +13,6 @@ export class MainMenu extends Scene
     {
         super('MainMenu');
     }
-
     create ()
     {
         this.background = this.add.image(512, 384, 'background');
@@ -27,9 +26,7 @@ export class MainMenu extends Scene
         }).setOrigin(0.5).setDepth(100);
 
         EventBus.emit('current-scene-ready', this);
-    }
-    
-    changeScene ()
+    } changeScene ()
     {
         if (this.logoTween)
         {
@@ -38,9 +35,7 @@ export class MainMenu extends Scene
         }
 
         this.scene.start('Game');
-    }
-
-    moveLogo (vueCallback: ({ x, y }: { x: number, y: number }) => void)
+    } moveLogo (vueCallback: ({ x, y }: { x: number, y: number }) => void)
     {
         if (this.logoTween)
         {

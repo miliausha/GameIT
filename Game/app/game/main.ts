@@ -5,6 +5,7 @@ import { MainMenu } from './scenes/MainMenu';
 import { RealPlay } from './scenes/RealPlay';
 import { AUTO, Game } from 'phaser';
 import { Preloader } from './scenes/Preloader';
+import { Results } from './scenes/Results';
 
 const config: Phaser.Types.Core.GameConfig = {
     type: AUTO,
@@ -18,6 +19,7 @@ const config: Phaser.Types.Core.GameConfig = {
         MainMenu,
         MainGame,
         RealPlay,
+        Results,
         GameOver
     ]
 };

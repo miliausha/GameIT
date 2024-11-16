@@ -1,7 +1,6 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { GameObjects } from 'phaser';
-// import { TimerEvent } from 'phaser';
 
 export class Game extends Scene
 {
@@ -16,12 +15,7 @@ export class Game extends Scene
     timeLeft: number;
     timerEvent: Phaser.Time.TimerEvent;
     bothPlayersReady: boolean;
-
-    constructor ()
-    {
-        super('Game');
-    }
-
+    constructor (){super('Game');}
     create ()
     {
         this.camera = this.cameras.main;
@@ -42,7 +36,7 @@ export class Game extends Scene
         this.timerText = this.add.text(512, 284, '10', {
             fontFamily: 'Arial Black',
             fontSize: 48,
-            color: '#ff0000',
+            color: '#D5E800',
             stroke: '#000000',
             strokeThickness: 8,
             align: 'center'
@@ -50,10 +44,10 @@ export class Game extends Scene
 
         const buttonStyle = {
             fontFamily: 'Arial Black',
-            fontSize: 32,
+            fontSize: 29,
             color: '#ffffff',
             backgroundColor: '#000000',
-            padding: { x: 20, y: 10 },
+            padding: { x: 19, y: 10 },
             fixedWidth: 200
         };
 
@@ -87,10 +81,8 @@ export class Game extends Scene
                 this.bothPlayersReady = true;
             }
         });
-
         EventBus.emit('current-scene-ready', this);
     }
-
     updateTimer() {
         this.timeLeft--;
         this.timerText.setText(this.timeLeft.toString());
@@ -110,7 +102,6 @@ export class Game extends Scene
         
         EventBus.emit('player-choice', choice);
     }
-
     changeScene ()
     {
         this.scene.start('RealPlay', { 
