@@ -1,10 +1,52 @@
+"use client";
+
+import { useLogin, usePrivy } from "@privy-io/react-auth";
+import shortenAddress from './utils/index';
 import Monkey from '@/images/monkey.png';
 import Image from 'next/image';
 import Kaban from '@/images/Kaban.png';
 
 export default function Home() {
+  const { logout, authenticated, ready, user, createWallet } = usePrivy();
+  const { login } = useLogin({
+    onComplete: async (user) => {
+      console.log("login complete", user);
+      if (!user.wallet) {
+        const userWallet = await createWallet();
+        console.log("new user wallet", userWallet);
+      }
+    },
+  });
+
+  if (!ready) {
+    return (
+      <div className="flex justify-center items-center h-screen w-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
   return (
     <div className='md:flex w-full h-full mx-10'>
+      <div className="flex justify-between items-center px-4 py-2">
+        <h1 className="font-bold">Authentication</h1>
+        {authenticated && user && (
+          <button
+            onClick={() => logout()}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            {/* {shortenAddress(user?.wallet!.address)} */}
+            User Address
+          </button>
+        )}
+        {!authenticated && (
+          <button
+            onClick={() => login()}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Connect
+          </button>
+        )}
+      </div>
       <div className='w-1/2 flex justify-center items-center space-x-4'>
         <div className="rounded-lg shadow-xl p-4 text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
           <Image src={Monkey} alt='monkey' />
