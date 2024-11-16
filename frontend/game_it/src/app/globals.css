@@ -5,17 +5,54 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --nft-card-primary: #26C6DA;
+  --nft-card-secondary: #D5E800;
+  --nft-card-back: #003AE8;
+  --text-primary: #ffffff;
+  --text-secondary: #171717;
+  --text-accent: #26C6DA;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ffffff;
+    --text-secondary: #ffffff;
+    --text-primary: #e48f11;
   }
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  /* background: var(--background); */
+  background-color: hsl(266, 64%, 44%);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--text-accent);
 }
