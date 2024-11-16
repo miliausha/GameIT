@@ -3,9 +3,10 @@
 import { useLogin, usePrivy } from "@privy-io/react-auth";
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-// import shortenAddress from './utils/index';
-// import Image from 'next/image';
+import Image from 'next/image';
 import Button from '@/components/Button';
+import Cat1 from '@/images/ranger-cat.png';
+import Cat2 from '@/images/rocker-cat.png';
 
 const metadata: Metadata = {
   title: "Game BIT | NFT Game Arena",
@@ -36,11 +37,11 @@ export default function Home() {
   return (
     <div className='md:flex w-full h-full mx-auto'>
       <div className='flex-1 flex justify-center items-center space-x-4 px-5 rounded-full'>
-        <div className="rounded-3xl shadow-xl p-4 text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
-          {/* <Image src={Monkey} alt='monkey' /> */}
+        <div className="rounded-3xl shadow-xl text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
+          <Image src={Cat1} alt='Cat' />
         </div>
-        <div className="rounded-3xl shadow-xl p-4 text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
-          {/* <Image src={Kaban} alt='Kaban' /> */}
+        <div className="rounded-3xl shadow-xl text-center bg-gradient-primary w-80 h-80 flex justify-center items-center">
+          <Image src={Cat2} alt='Cat' />
         </div>
       </div>
       <div className='w-1/2 flex flex-col justify-center text-wrap px-5'>

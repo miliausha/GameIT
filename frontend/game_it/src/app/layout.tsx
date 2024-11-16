@@ -1,24 +1,11 @@
 'use client';
 
 import { PrivyProvider } from '@privy-io/react-auth';
-// import type { Metadata } from "next";
-// import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./header";
 import Footer from "./footer";
+// import { UserProvider } from "./UserContext";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
-
-// Metadata Export needed
 
 
 function Providers({ children }: { children: React.ReactNode }) {
@@ -48,11 +35,13 @@ export default function RootLayout({
         className={`flex flex-col h-screen`}
       >
         <Providers>
-          <Header />
-          <div className="flex flex-1 flex-col">
-            {children}
-          </div>
-          <Footer />
+          {/* <UserProvider/> */}
+            <Header />
+            <div className="flex flex-1 flex-col">
+              {children}
+            </div>
+            <Footer />
+          {/* <UserProvider /> */}
         </Providers>
       </body>
     </html>
