@@ -30,7 +30,7 @@ contract Tournament {
 	bool full;
 	address[] players;
 	uint[] tokenId;
-	function register_players(uint id, uint price)public returns(bool) {
+	function register_players(uint id, uint price)public payable returns(bool) {
 		//if full create a new instance
 		if (players.length == 1)
 			require(id == tokenId[0], "not matching tokens");
