@@ -16,14 +16,17 @@
     "ethers": "^6.13.4",
     "moralis": "^2.27.2",
     "next": "15.0.3",
+    "phaser": "^3.87.0",
     "privy": "^0.4.1",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "babel-loader": "^9.2.1",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
