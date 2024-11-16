@@ -11,11 +11,8 @@ contract Tournament is ERC721URIStorage, Ownable{
 	address[] public sellers;
     address[] public players; 
     uint[] public nftReferences;
-    bool public finished = false;
-	uint public token_counter;
 
     constructor() ERC721("TestNFT", "TNFT") Ownable(msg.sender) {
-        token_counter = 0;
     }
 	event GameStarted(address indexed player1, address indexed player2);
     event PlayerRegistered(address indexed player, uint tokenId, bool isNewGame);
