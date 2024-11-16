@@ -1,147 +1,45 @@
+// scenes/RealPlay.ts
 import { Scene } from 'phaser';
-import { EventBus } from '../EventBus';
 
-interface MainGameData {
+interface GameData {
     playerChoice: string;
     timeExpired: boolean;
 }
 
-export class MainGame extends Scene {
-    private playerSprite: Phaser.GameObjects.Sprite;
-    private resultText: Phaser.GameObjects.Text;
+export class RealPlay extends Scene {
     private playerChoice: string;
     private timeExpired: boolean;
 
     constructor() {
-        super({ key: 'MainGame' });
+        super('RealPlay');
     }
 
-    init(data: MainGameData) {
+    init(data: GameData) {
         this.playerChoice = data.playerChoice;
         this.timeExpired = data.timeExpired;
     }
 
     create() {
-        // Set up background
-        this.cameras.main.setBackgroundColor(0x3498db);
         const background = this.add.image(512, 384, 'background');
         background.setAlpha(0.5);
 
-        // Display player's choice
-        this.showPlayerChoice();
+        const choiceImage = this.add.image(150, 384, this.playerChoice)
+            .setOrigin(0.5)
+            .setScale(0.2);
 
-        // Show result text
-        if (this.timeExpired) {
-            this.showTimeExpiredMessage();
-        } else {
-            this.showChoiceResult();
-        }
 
-        // Add a return to menu button
-        this.createReturnButton();
-    }
-
-    private showPlayerChoice() {
-        // Position for the player's choice display
-        const centerX = this.cameras.main.centerX;
-        const centerY = this.cameras.main.centerY - 100;
-
-        // Add the choice text
-        this.add.text(centerX, centerY - 100, 'Your Choice:', {
+        const buttonStyle = {
             fontFamily: 'Arial Black',
-            fontSize: '32px',
+            fontSize: 32,
             color: '#ffffff',
-            stroke: '#000000',
-            strokeThickness: 6
-        }).setOrigin(0.5);
+            backgroundColor: '#000000',
+            padding: { x: 20, y: 10 },
+            fixedWidth: 200
+        };
 
-        // Show the appropriate sprite based on choice
-        const spriteKey = this.getChoiceSprite(this.playerChoice);
-        this.playerSprite = this.add.sprite(centerX, centerY, spriteKey);
-        this.playerSprite.setScale(2); // Adjust scale as needed
-
-        // Add animation if sprites support it
-        this.createChoiceAnimation();
-    }
-
-    private getChoiceSprite(choice: string): string {
-        // Return the appropriate sprite key based on choice
-        switch (choice) {
-            case 'rock':
-                return 'rock-sprite'; // Replace with your actual sprite key
-            case 'paper':
-                return 'paper-sprite'; // Replace with your actual sprite key
-            case 'scissors':
-                return 'scissors-sprite'; // Replace with your actual sprite key
-            default:
-                return 'default-sprite'; // Replace with your actual sprite key
-        }
-    }
-
-    private createChoiceAnimation() {
-        // Add a simple hover animation
-        this.tweens.add({
-            targets: this.playerSprite,
-            y: '+=10',
-            duration: 1000,
-            yoyo: true,
-            repeat: -1,
-            ease: 'Sine.easeInOut'
-        });
-    }
-
-    private showTimeExpiredMessage() {
-        this.resultText = this.add.text(
-            this.cameras.main.centerX,
-            this.cameras.main.centerY + 100,
-            'Time Expired!',
-            {
-                fontFamily: 'Arial Black',
-                fontSize: '48px',
-                color: '#ff0000',
-                stroke: '#000000',
-                strokeThickness: 6
-            }
-        ).setOrigin(0.5);
-    }
-
-    private showChoiceResult() {
-        const resultMessage = `You chose ${this.playerChoice.toUpperCase()}!`;
-        this.resultText = this.add.text(
-            this.cameras.main.centerX,
-            this.cameras.main.centerY + 100,
-            resultMessage,
-            {
-                fontFamily: 'Arial Black',
-                fontSize: '38px',
-                color: '#ffffff',
-                stroke: '#000000',
-                strokeThickness: 6
-            }
-        ).setOrigin(0.5);
-    }
-
-    private createReturnButton() {
-        const button = this.add.text(
-            this.cameras.main.centerX,
-            this.cameras.main.centerY + 200,
-            'Return to Menu',
-            {
-                fontFamily: 'Arial Black',
-                fontSize: '24px',
-                color: '#ffffff',
-                backgroundColor: '#000000',
-                padding: { x: 20, y: 10 }
-            }
-        )
+        const menuButton = this.add.text(512, 500, 'MENU', buttonStyle)
             .setOrigin(0.5)
             .setInteractive()
-            .on('pointerdown', () => {
-                this.scene.start('Game');
-            });
-
-        // Add hover effect
-        button.on('pointerover', () => button.setStyle({ color: '#ffff00' }));
-        button.on('pointerout', () => button.setStyle({ color: '#ffffff' }));
+            .on('pointerdown', () => this.scene.start('MainMenu'));
     }
 }

@@ -112,7 +112,7 @@ export class Game extends Scene
 
     changeScene ()
     {
-        this.scene.start('MainGame', { 
+        this.scene.start('RealPlay', { 
             playerChoice: this.playerChoice,
             timeExpired: this.timeLeft <= 0
         });
