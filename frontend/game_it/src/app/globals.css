@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'TT Travel';
+  src: url('/path/to/fonts/TTTravel-Regular.woff2') format('woff2'),
+       url('/path/to/fonts/TTTravel-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Travel';
+  src: url('/path/to/fonts/TTTravel-Bold.woff2') format('woff2'),
+       url('/path/to/fonts/TTTravel-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -28,8 +44,7 @@ body {
   color: var(--foreground);
   /* background: var(--background); */
   background-color: hsl(276, 100%, 11%);
-  font-family: Arial, Helvetica, sans-serif;
-  : #D5E800;
+  font-family: 'TT Travel', sans-serif;
 }
 
 .perspective-1000 {
