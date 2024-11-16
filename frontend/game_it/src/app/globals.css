@@ -5,9 +5,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --nft-card-primary: #26C6DA;
-  --nft-card-secondary: #D5E800;
-  --nft-card-back: #003AE8;
+  --nft-card-primary: #26c6dA;
+  --nft-card-secondary: #d5e800;
+  --nft-card-back: #8c8c8c;
   --text-primary: #ffffff;
   --text-secondary: #171717;
   --text-accent: #26C6DA;
@@ -25,7 +25,7 @@
 body {
   color: var(--foreground);
   /* background: var(--background); */
-  background-color: hsl(266, 64%, 44%);
+  background-color: hsl(276, 100%, 11%);
   font-family: Arial, Helvetica, sans-serif;
 }
 
