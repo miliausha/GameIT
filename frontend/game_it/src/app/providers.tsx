@@ -16,11 +16,10 @@ const wagmiConfig = createConfig({
 const queryClient = new QueryClient();
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-
-  console.log(process.env.NEXT_PUBLIC_PRIVY_APP_ID)
   return (
     <PrivyProvider
-      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
+      // appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
+      appId="cm3jxft0s06ulxecy1vc0mzqe" 
       config={{
         appearance: {
           theme: "light",
