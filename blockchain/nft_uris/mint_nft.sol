@@ -6,11 +6,10 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Tournament is ERC721URIStorage, Ownable{
-	struct nftOnSale {
-    	string[] tokenUris;
-    	uint[] prices;
-		address[] sellers;
-	}
+
+    string[] tokenUris;
+    uint[] prices;
+	address[] sellers;
 
 	struct CurrentGame {
     	address[] players; 
@@ -23,14 +22,19 @@ contract Tournament is ERC721URIStorage, Ownable{
 	event GameStarted(
 		address indexed player1, 
 		address indexed player2
-	);
+	);//notification to start game...
 
     event PlayerRegistered(
 		address indexed player, 
 		uint tokenId, 
 		bool isNewGame
-	);
+	);//for logging info
 
+    event   newTokenAdded(
+        string tokenUri,
+        uint tokenPrice,
+        address indexed tokenSeller
+    );//for logging info
 
     constructor() ERC721("TestNFT", "TNFT") Ownable(msg.sender) {}
 	
@@ -41,8 +45,8 @@ contract Tournament is ERC721URIStorage, Ownable{
 	Parameters  : nftReferenceId(id referencing the type of nft they want to buy, so if we have only 2 images to sell this will be either 0 or 1)
 	*/
     function register_players(uint nftReferenceId) public payable returns(bool) {
-        require(nftReferenceId < nftOnSale.tokenUris.length, "Invalid token id");
-        require(msg.value == nftOnSale.prices[nftReferenceId] * 2, "Incorrect ETH amount");
+        require(nftReferenceId < tokenUris.length, "Invalid token id");
+        require(msg.value == prices[nftReferenceId] * 2, "Incorrect ETH amount");
         if (Games[gameId].players.length == 1) {
             require(nftReferenceId == Games[gameId].nftReferences[0], "Not matching tokens");
             require(msg.sender != Games[gameId].players[0], "2 unique users required");
@@ -52,9 +56,9 @@ contract Tournament is ERC721URIStorage, Ownable{
         }
         Games[gameId].players.push(msg.sender);
         Games[gameId].nftReferences.push(nftReferenceId);
-		payable(nftOnSale.sellers[nftReferenceId]).transfer(nftOnSale.prices[nftReferenceId]);
+		payable(sellers[nftReferenceId]).transfer(prices[nftReferenceId]);
 		_safeMint(msg.sender, uniqueNftownershipId);
-    	_setTokenURI(uniqueNftownershipId, nftOnSale.tokenUris[nftReferenceId]);
+    	_setTokenURI(uniqueNftownershipId, tokenUris[nftReferenceId]);
         if (Games[gameId].players.length == 1)
             emit PlayerRegistered(msg.sender, uniqueNftownershipId, true);
         else 
@@ -78,7 +82,7 @@ contract Tournament is ERC721URIStorage, Ownable{
 	*/
     function refund_winner(address winner, address loser) public payable {
     	require(msg.sender == loser || msg.sender ==  winner, "You are not a player");
-    	payable(winner).transfer(nftOnSale.prices[Games[gameId].nftReferences[0]] * 2);
+    	payable(winner).transfer(prices[Games[gameId].nftReferences[0]] * 2);
 		gameId++;
     }
 
@@ -89,8 +93,9 @@ contract Tournament is ERC721URIStorage, Ownable{
 	Parameters  : uri (link of nft ...)
 	*/
     function addTokenUriAndPrice(string memory uri, uint price) public {
-        nftOnSale.tokenUris.push(uri);
-        nftOnSale.prices.push(price);
-		nftOnSale.sellers.push(msg.sender);
+        tokenUris.push(uri);
+        prices.push(price);
+		sellers.push(msg.sender);
+        emit newTokenAdded(uri, price, msg.sender);
     }
 }
