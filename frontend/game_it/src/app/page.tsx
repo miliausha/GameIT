@@ -22,7 +22,7 @@ export default function Home() {
         const userWallet = await createWallet();
         console.log("new user wallet", userWallet);
       }
-      redirect('/users');
+      // redirect('/users');
     },
   });
 
@@ -43,41 +43,73 @@ export default function Home() {
           {/* <Image src={Kaban} alt='Kaban' /> */}
         </div>
       </div>
-      <div className='w-1/2 flex flex-col justify-center text-wrap px-5'>
-        <p className='text-text-highlighted text-3xl mb-4'>
+      <div className='w-1/2 flex flex-col justify-center text-wrap px-5 p-8'>
+        <h1 className='text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 text-transparent bg-clip-text'>
           Step into a world where fun meets rewards!
-        </p>
-        <p className='mb-4 text-white'>
-          GameBIT is a Game Arena that lets you play exciting mini-games and win exclusive NFTs. Compete with other players in thrilling games like "Rock-Paper-Scissors," where your skills can earn you valuable digital collectibles.
-        </p>
-        <p className='text-[#26C6DA] mb-4 text-2xl'>
-          Here is how it works:
-        </p>
-        <ul className='text-[#26C6DA] list-disc list-inside mb-4'>
-          <li className='mb-2'>Join the Game: Enter a match by staking a small entry fee.</li>
-          <li className='mb-2'>Compete and Win: Play against other players for a chance to win NFTs and reclaim your stake.</li>
-          <li className='mb-2'>Fair and Transparent: Powered by blockchain, our platform ensures secure transactions and fair gameplay.</li>
-        </ul>
-        <div className="flex justify-between items-center">
-          <p className='text-text-highlighted mb-4'>
-            Ready to play and collect? Dive into the NFT Game Arena and turn your skills into rewards!
+        </h1>
+
+        <div className="space-y-4 mb-8">
+          <p className="text-xl text-blue-highlighted font-semibold">
+            GameBIT: Play mini-games. Win & trade NFTs!
           </p>
-          {authenticated && user && (
-            <button
-              onClick={() => logout()}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            >
-              {/* {shortenAddress(user?.wallet!.address)} */}
-              Logout
-            </button>
-          )}
+          <p className="text-gray-200 text-lg leading-relaxed">
+            Battle in games like "Rock-Paper-Scissors" to win digital collectibles.
+          </p>
+        </div>
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4 text-blue-highlighted">
+            How to Play:
+          </h2>
+          <ul className="space-y-3">
+            <li className="flex items-start">
+              <span className="text-blue-highlighted mr-2">•</span>
+              <span className="text-gray-200">
+                <strong className="text-gray-200 ">Stake to enter game</strong>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-highlighted mr-2">•</span>
+              <span className="text-gray-200">
+                <strong className="text-gray-200 ">Win NFTs & reclaim stakes</strong>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-highlighted mr-2">•</span>
+              <span className="text-gray-200">
+                <strong className="text-gray-200 ">Put your NFTs back in play ( set your own price )</strong>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-highlighted mr-2">•</span>
+              <span className="text-gray-200">
+                <strong className="text-gray-200 ">Fair gameplay backed by blockchain</strong>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex items-center">
+          <p className='text-yellow-400 text-xl font-semibold'>
+            Ready? Jump in and start winning, trading, or both!
+          </p>
           {!authenticated && (
             <Button onClick={() => login()}>
               Connect
             </Button>
           )}
         </div>
+
+        {authenticated && user && (
+          <div className="flex justify-end mt-4">
+            <button
+              onClick={() => logout()}
+              className="px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </div>
-  </div>
+    </div>
   );
 }

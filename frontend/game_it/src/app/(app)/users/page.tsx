@@ -5,7 +5,10 @@ const MainPage: NextPage = async () => {
     return (
         <div className='flex w-full h-full mx-10'>
             <div className='w-full flex justify-center items-center'>
-                <Button />
+                {/* <Button /> */}
+
+                <Button>Travels</Button>
+                
             </div>
         </div>
     );

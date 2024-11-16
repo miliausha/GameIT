@@ -2,25 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: 'TT Travel';
+@font-face {
+  font-family: 'TT Travels';
   src: url('./fonts/TTTravelsTrialRegular.otf') format('otf');
   font-style: normal;
-} */
+}
 
 /* @font-face {
-  font-family: 'TT Travel';
-  src: url('/path/to/fonts/TTTravel-Bold.woff2') format('woff2'),
-       url('/path/to/fonts/TTTravel-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-} */
-
-@font-face {
   font-family: 'Genos';
   src: url('./fonts/Genos-VariableFont_wght.ttf') format('ttf');
   font-style: normal;
-}
+} */
 
 :root {
   --background: #ffffff;
@@ -50,7 +42,7 @@ body {
   /* background: var(--background); */
   background-color: #171717;
   /* background-color: hsl(276, 100%, 11%); */
-  font-family: 'TT Travel', sans-serif;
+  font-family: 'TT Travels', sans-serif;
 }
 
 .perspective-1000 {
@@ -79,4 +71,22 @@ body {
 
 .text-accent {
   color: var(--text-accent);
+}
+
+.main-text {
+  /* Container */
+  max-width: min(65ch, 100% - 2rem); /* Responsive width */
+  margin-inline: auto;  /* Modern way to center */
+  
+  /* Font settings */
+  font-size: clamp(1rem, 1vw + 0.75rem, 1.25rem); /* Fluid typography */
+  
+  /* Spacing */
+  display: grid;
+  gap: 1.5rem;  /* Modern way to space paragraphs */
+}
+
+.main-paragraph {
+  margin-bottom: 1.5rem; /* Space between paragraphs */
+  text-indent: 0;        /* Modern style often skips indentation */
 }
