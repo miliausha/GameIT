@@ -18,6 +18,7 @@ contract Tournament is ERC721URIStorage, Ownable{
         token_counter = 0;
     }
 	event GameStarted(address indexed player1, address indexed player2);
+    event PlayerRegistered(address indexed player, uint tokenId, bool isNewGame);
 
     function register_players(uint nftReferenceId, uint uniqueNftownershipId) public payable returns(bool) {
         require(nftReferenceId < tokenUris.length, "Invalid token id");
@@ -34,7 +35,11 @@ contract Tournament is ERC721URIStorage, Ownable{
 		payable(sellers[nftReferenceId]).transfer(prices[nftReferenceId]);
 		_safeMint(msg.sender, uniqueNftownershipId);
     	_setTokenURI(uniqueNftownershipId, tokenUris[nftReferenceId]);
-        if (players.length == 2) {
+        if (players.length == 1)
+            emit PlayerRegistered(msg.sender, uniqueNftownershipId, true);
+        else 
+        {
+            emit PlayerRegistered(msg.sender, uniqueNftownershipId, false);
             start_game();
         }
         return true;
