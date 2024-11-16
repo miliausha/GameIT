@@ -18,7 +18,11 @@ export default {
         'text-primary': 'var(--text-primary)',
         'text-secondary': 'var(--text-secondary)',
         'text-highlighted': 'var(--text-highlighted)',
+        'text-blue-highlighted': 'var(--text-blue-highlighted',
         'text-accent': 'var(--text-accent)',
+      },
+      backgroundImage: {
+        'gradient-primary': 'var(--gradient-primary)',
       },
       boxShadow: {
         'glow': '0 0 15px rgba(0, 0, 0, 0.3)',
