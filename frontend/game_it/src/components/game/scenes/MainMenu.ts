@@ -37,8 +37,8 @@ export class MainMenu extends Scene {
         })
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
-        .on('pointerover', () => this.startButton.setStyle({ color: '#ff0' }))
-        .on('pointerout', () => this.startButton.setStyle({ color: '#fff' }))
+        .on('pointerover', () => this.startButton!.setStyle({ color: '#ff0' }))
+        .on('pointerout', () => this.startButton!.setStyle({ color: '#fff' }))
         .on('pointerdown', () => this.startGame());
 
         // Notify that the scene is ready
