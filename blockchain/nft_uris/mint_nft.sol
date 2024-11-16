@@ -9,6 +9,7 @@ contract Tournament is ERC721URIStorage, Ownable{
     string[] public tokenUris;
     uint[] public prices;
     address[] public players; 
+	address[] public sellers;
     uint[] public tokenId;
     bool public finished = false;
 	uint public token_counter;
@@ -30,6 +31,7 @@ contract Tournament is ERC721URIStorage, Ownable{
         }
         players.push(msg.sender);
         tokenId.push(id);
+		payable(sellers[id]).transfer(prices[id]);
 		_safeMint(msg.sender, id);
     	_setTokenURI(id, tokenUris[id]);
         if (players.length == 2) {
@@ -67,5 +69,6 @@ contract Tournament is ERC721URIStorage, Ownable{
     function addTokenUriAndPrice(string memory uri, uint price) public onlyOwner {
         tokenUris.push(uri);
         prices.push(price);
+		sellers.push(msg.sender);//seller call this ft!
     }
 }
