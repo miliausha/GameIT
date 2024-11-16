@@ -2,19 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: 'TT Travel';
-  src: url('/path/to/fonts/TTTravel-Regular.woff2') format('woff2'),
-       url('/path/to/fonts/TTTravel-Regular.woff') format('woff');
-  font-weight: normal;
+  src: url('./fonts/TTTravelsTrialRegular.otf') format('otf');
   font-style: normal;
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: 'TT Travel';
   src: url('/path/to/fonts/TTTravel-Bold.woff2') format('woff2'),
        url('/path/to/fonts/TTTravel-Bold.woff') format('woff');
   font-weight: bold;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'Genos';
+  src: url('./fonts/Genos-VariableFont_wght.ttf') format('ttf');
   font-style: normal;
 }
 
@@ -28,6 +32,7 @@
   --text-primary: #ffffff;
   --text-secondary: #171717;
   --text-highlighted: #D5E800;
+  --text-blue-highlighted: #26C6DA;
   --text-accent: #26C6DA;
 }
 
@@ -43,7 +48,8 @@
 body {
   color: var(--foreground);
   /* background: var(--background); */
-  background-color: hsl(276, 100%, 11%);
+  background-color: #171717;
+  /* background-color: hsl(276, 100%, 11%); */
   font-family: 'TT Travel', sans-serif;
 }
 

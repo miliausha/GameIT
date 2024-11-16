@@ -18,6 +18,7 @@ export default {
         'text-primary': 'var(--text-primary)',
         'text-secondary': 'var(--text-secondary)',
         'text-highlighted': 'var(--text-highlighted)',
+        'text-blue-highlighted': 'var(--text-blue-highlighted',
         'text-accent': 'var(--text-accent)',
       },
       backgroundImage: {
