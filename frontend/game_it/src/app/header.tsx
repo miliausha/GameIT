@@ -16,11 +16,11 @@ export default function Header() {
         <header className="flex p-4 text-white w-full">
             <nav className='w-full'>
                 <ul className="flex w-full justify-between items-center">
-                    <li>
+                    {/* <li>
                         <a href="#" className="hover:underline">
                         Games
                         </a>
-                    </li>
+                    </li> */}
                     <li>
                         <Image src={Logo} alt="GameBIT" height={80} /> 
                     </li>
