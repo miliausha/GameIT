@@ -1,3 +1,4 @@
+<!-- <<<<<<< max -->
 import NFTCard from '@/components/NFTCard';
 
 // Mock data - replace with your actual NFT data
@@ -9,7 +10,7 @@ const nfts = [
   // Add more NFTs as needed
 ];
 
-export default function Home() {
+<!-- export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-7xl w-full">
@@ -28,5 +29,16 @@ export default function Home() {
         </div>
       </div>
     </main>
+======= -->
+// Code: src/app/page.tsx
+// Code: src/app/providers.tsx
+// Code: src/app/layout.tsx
+
+export default function Home() {
+  return (
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      
+    </div>
+// >>>>>>> main
   );
 }
