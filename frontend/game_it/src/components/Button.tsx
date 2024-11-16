@@ -3,18 +3,20 @@
 
 import React from 'react';
 
-interface StartGameButtonProps {
+interface ButtonProps {
   onClick?: () => void;
+  children: string;
+
 }
 
-const StartGameButton: React.FC<StartGameButtonProps> = ({ onClick }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
   return (
     <button
       className="
-        px-24 py-4 
+        px-8 py-4 
         bg-gradient-to-tr from-[var(--nft-card-primary)] to-[var(--nft-card-secondary)]
         text-[var(--text-secondary)]
-        rounded-lg font-bold text-lg
+        rounded-3xl font-bold text-lg
         transition-all duration-300
         transform
 				hover:scale-105
@@ -24,13 +26,10 @@ const StartGameButton: React.FC<StartGameButtonProps> = ({ onClick }) => {
       onClick={onClick}
     >
       <span className="flex items-center justify-center">
-        <span className="mr-2">Start Game</span>
-        {/* <span className="inline-block transition-transform group-hover:animate-bounce">
-          ▶
-        </span> */}
+        <span className="mr-2">{children}</span>
       </span>
     </button>
   );
 };
 
-export default StartGameButton;
+export default Button;
