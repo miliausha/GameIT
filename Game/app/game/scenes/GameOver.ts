@@ -11,7 +11,6 @@ export class GameOver extends Scene
     {
         super('GameOver');
     }
-
     create ()
     {
         this.camera = this.cameras.main
@@ -28,7 +27,6 @@ export class GameOver extends Scene
         
         EventBus.emit('current-scene-ready', this);
     }
-
     changeScene ()
     {
         this.scene.start('MainMenu');

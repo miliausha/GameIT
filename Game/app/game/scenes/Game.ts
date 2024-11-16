@@ -15,7 +15,6 @@ export class Game extends Scene
     timeLeft: number;
     timerEvent: Phaser.Time.TimerEvent;
     bothPlayersReady: boolean;
-
     constructor ()
     {
         super('Game');
@@ -109,7 +108,6 @@ export class Game extends Scene
         
         EventBus.emit('player-choice', choice);
     }
-
     changeScene ()
     {
         this.scene.start('RealPlay', { 
