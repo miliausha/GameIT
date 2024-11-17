@@ -26,6 +26,11 @@ export default function GamePage() {
   }
 
   return (
+<<<<<<< HEAD
+    <div className="mx-auto px-4 py-8">
+      <div className="w-full h-[768px]">
+        <GameComponent />
+=======
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-center gap-6 mb-8">
         <button 
@@ -46,6 +51,7 @@ export default function GamePage() {
         >
           Battleship
         </button>
+>>>>>>> origin/main
       </div>
     </div>
   );
