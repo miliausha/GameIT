@@ -35,13 +35,29 @@ export class RealPlay extends Scene {
     create() {
         const background = this.add.image(512, 384, 'background');
         background.setAlpha(0.5);
+        
+        // Create player choice image with conditional tint
         const choiceImage = this.add.image(150, 384, this.playerChoice)
             .setOrigin(0.5)
             .setScale(0.2);
+
+        // Create AI choice image
         const aiChoiceImage = this.add.image(874, 384, this.aiChoice)
             .setOrigin(0.5)
             .setScale(0.2)
             .setFlipX(true);
+
+        // Add gray tint to non-selected choices
+        this.possibleChoices.forEach(choice => {
+            if (choice !== this.playerChoice) {
+                const image = this.add.image(150, 384, choice)
+                    .setOrigin(0.5)
+                    .setScale(0.2)
+                    .setTint(0x808080) // Add gray tint
+                    .setVisible(false); // Hide it since we don't want multiple images
+            }
+        });
+
         const buttonStyle = {
             fontFamily: 'Arial Black',
             fontSize: 32,
