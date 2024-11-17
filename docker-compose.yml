@@ -1,41 +1,7 @@
+version: '3.8'
+
 services:
-  backend:
-    image: postgres
+  game:
+    build: ./frontend/game_it
     restart: always
-    env_file: .env
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-
-  api:
-    build: ./api
-    restart: always
-    env_file: .env
-    platform: linux/amd64
-    volumes:
-      - uploads:/usr/share/uploads
-    depends_on:
-      - db
-
-  front:
-    build: ./matcha_front
-    restart: always
-    env_file: .env
-    depends_on:
-      - api
-
-  nginx:
-    build: ./matcha_nginx
-    restart: always
-    env_file: .env
-    volumes:
-      - uploads:/usr/share/nginx/html/uploads
-    ports:
-      - 80:80
-    depends_on:
-      - api
-
-volumes:
-  db_data:
-  uploads:
+    env_file: frontend/game_it/.env

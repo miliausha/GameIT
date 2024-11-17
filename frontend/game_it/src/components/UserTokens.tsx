@@ -45,8 +45,7 @@ const UserTokens: React.FC<{ accountAddress: string }> = ({ accountAddress }) =>
   return (
     <div>
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {!loading && !error && (
+      {!loading  && (
           <ul>
             {tokens.map((token, index) => (
               <li key={index}>
